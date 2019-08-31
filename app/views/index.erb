@@ -1,0 +1,9 @@
+<ul>
+ <% @riddle_posts.each do |riddle_post|%>
+   <li>
+     <a href="/riddle_post/<%= riidle_post.id %>"> Title: <%= riidle_post.title %></a>
+     Content: Content: <%= @riddle_post.content %>
+   
+   </li>
+ <% end %>
+ </ul>

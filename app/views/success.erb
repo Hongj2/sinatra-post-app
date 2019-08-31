@@ -2,9 +2,14 @@
 <p>Welcome to your homepage, <%= current_user.username%>!! Check out all the possbilities you have on this website!! </p>
 <p>Are you ready for some silly riddles?</p>
 <ul>
-    <li>Create your own riddles</li>
-    <li>Read your riddles</li>
-    <li>Update your riddles</li>
-    <li>Delete your riddles</li>
+    <li>Create your own riddles</li><a href="/riddle_posts/new">Create</a>
+    <p></p>
+    <li>Read your riddles</li><a href="/riddle_posts">Read</a>
+    <p></p>
+    <li>Update your riddles</li><a href="/edit">Edit</a>
+    <p></p>
+    
 </ul>
-<p><a href="/logout">Log Out</a></p>
+<p></p>
+<p></p>
+<p>Do you want to leave? Click Log Out to exit out of this page!    <a href="/logout">Log Out</a></p>
