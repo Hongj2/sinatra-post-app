@@ -1,13 +1,17 @@
+<form method="get" action="/success">
+   <input type="submit" value="Home Page" />
+ </form> 
+
+ <form method="get" action="/logout">
+   <input type="submit" value="Log Out" />
+ </form>  
+
 Title: <%= @riddle_post.title %>
 <p>
  Content: <%= @riddle_post.content %>
 
 </p>
 
-
-<form method="get" action="/success">
-   <input type="submit" value="homepage" />
- </form> 
 
   <form method="POST" action="/riddle_posts/<%=@riddle_post.id%>">
    <input type="hidden" name="_method" value="DELETE" />

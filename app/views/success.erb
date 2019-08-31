@@ -1,3 +1,4 @@
+
 <h1>HOMEPAGE</h1>
 <p>Welcome to your homepage, <%= current_user.username%>!! Check out all the possbilities you have on this website!! </p>
 <p>Are you ready for some silly riddles?</p>
@@ -12,4 +13,7 @@
 </ul>
 <p></p>
 <p></p>
-<p>Do you want to leave? Click Log Out to exit out of this page!    <a href="/logout">Log Out</a></p>
+
+ <form method="get" action="/logout">
+   <input type="submit" value="Log Out" />
+ </form>  
