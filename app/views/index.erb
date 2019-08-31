@@ -1,9 +1,12 @@
+<h1>All riddles </h1>
+
 <ul>
  <% @riddle_posts.each do |riddle_post|%>
    <li>
-     <a href="/riddle_post/<%= riidle_post.id %>"> Title: <%= riidle_post.title %></a>
-     Content: Content: <%= @riddle_post.content %>
-   
+     <a href="/riddle_posts/<%=riddle_post.id%>"> <%= riddle_post.title %></a>
+     <p>
+      <%= riddle_post.content %>
+    </p>
    </li>
  <% end %>
  </ul>

@@ -6,7 +6,7 @@ get '/riddle_posts/new' do
   end
 
    get '/riddle_posts' do 
-    @riddle_post = RiddlePost.all
+    @riddle_posts = RiddlePost.all
     erb :index
   end
 
