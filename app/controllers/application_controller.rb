@@ -25,7 +25,7 @@ class ApplicationController < Sinatra::Base
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
         #this is what actually logs the user in and session hash is assigned with key-value 
-        redirect "/success"
+        redirect "/home"
       else
         redirect "/failure"
       end
@@ -39,21 +39,23 @@ class ApplicationController < Sinatra::Base
 
 #make a new instance of our user class with a username and password from params. Note that even though our database has a #column called password_digest, we still access the attribute of password. This is given to us by has_secure_password
   post "/signup" do
-    user = User.new(:username => params[:username], :password => params[:password])
-      if user.save
-      redirect "/login"
-      else
-      redirect "/failure"
-      end
+    @user = User.new(params)
+      @user.save
+      session[:user_id] = @user.id
+      redirect "/home"
+      
   end
 
-  get "/success" do
-		 if logged_in?
-			erb :success
+  get "/home" do
+    @user = User.find_by_id(session[:user_id])
+		 if @user
+			erb :home
 		 else
 		 	redirect "/failure"
 		 end
 	end
+
+
 
   get "/failure" do
 		erb :failure
@@ -61,11 +63,13 @@ class ApplicationController < Sinatra::Base
 
   helpers do
 		def logged_in?
-			!!session[:user_id]
+      !!session[:user_id]
+      #double bang takes a value and turns it into a boolean reflection of it truth to the truthiness of the object
 		end
 
 		def current_user
-			User.find(session[:user_id])
+      User.find(session[:user_id])
+      #could use @current_user ||= to reduce the amount of database retreival 
 		end
 	end
 

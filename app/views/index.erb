@@ -1,4 +1,4 @@
-<form method="get" action="/success">
+<form method="get" action="/home">
    <input type="submit" value="Home Page" />
  </form> 
 
@@ -11,7 +11,7 @@
 <ul>
  <% @riddle_posts.each do |riddle_post|%>
    <li>
-     <a href="/riddle_posts/<%=riddle_post.id%>"> <%= riddle_post.title %></a>
+      <%= riddle_post.title %>
      <p>
       <%= riddle_post.content %>
     </p>

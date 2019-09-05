@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base 
-has_secure_password
+validates_presence_of :name, :username
+validates_uniqueness_of :username
 
+has_secure_password
 has_many :riddle_posts
 end
 

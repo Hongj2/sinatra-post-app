@@ -1,16 +1,41 @@
-<form method="get" action="/success">
+<form method="get" action="/home">
    <input type="submit" value="Home Page" />
  </form> 
 
  <form method="get" action="/logout">
    <input type="submit" value="Log Out" />
  </form>  
+ <p>
 
+ </p>
 Title: <%= @riddle_post.title %>
 <p>
  Content: <%= @riddle_post.content %>
 </p>
 
+<p>
+
+</p>
+<p>
+<form method="POST" action="/riddle_posts/<%=@riddle_post.id%>">
+  <input type="hidden" name="_method" value="patch">
+  <ul>
+    <li>
+      <label for="title">Title</label>
+      <input type="text" id="title"  name="riddle_post[title]" value="<%= @riddle_post.title %>" />
+    </li>
+    <li>
+      <label for="content">Content</label>
+      <textarea type="text" id="content"  name="riddle_post[content]"  value="<%= @riddle_post.content %>">
+      </textarea>
+    </li>
+  </ul>
+  <p>
+
+  </p>
+  <input type="submit" />
+</form>
+</p>
 
   <form method="POST" action="/riddle_posts/<%=@riddle_post.id%>">
    <input type="hidden" name="_method" value="DELETE" />
