@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
     enable :sessions
 		set :session_secret, "password_security"
   end
-
+#creates a session id and provides an extra layer of security = creates a session hash that we can manipulate
   get "/" do
     erb :welcome
   end
@@ -18,12 +18,13 @@ class ApplicationController < Sinatra::Base
     erb :login
   end
 
-#recieve the login form to find user and log user in 
+#recieve the login form to find user and log user in  by finding the user
   post "/login" do
-    user = User.find_by(:username => params[:username])
-    
+    user = User.find_by(:username => params[:username]) 
+    #verify user though key value pair
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
+        #this is what actually logs the user in and session hash is assigned with key-value 
         redirect "/success"
       else
         redirect "/failure"
