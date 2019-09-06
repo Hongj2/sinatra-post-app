@@ -6,7 +6,7 @@ get '/riddle_posts/new' do
   end
 
    get '/riddle_posts' do 
-    @riddle_posts = RiddlePost.all
+    @riddle_posts = RiddlePost.all   
     erb :index
   end
 
@@ -17,11 +17,11 @@ get '/riddle_posts/new' do
     
   end
 
-   get '/riddle_posts/:id/edit' do 
-    @riddle_post = RiddlePost.find_by_id(params[:id])
-    erb :edit
+#    get '/riddle_posts/:id/edit' do 
+#     @riddle_post = RiddlePost.find_by_id(params[:id])
+#     erb :edit
     
-  end
+  
 
    patch '/riddle_posts/:id' do  
     

@@ -4,6 +4,7 @@ class CreateRiddlePosts < ActiveRecord::Migration
       t.string :title
       t.string :content
       t.integer :user_id 
+      t.string :answer
       t.timestamps null: false 
     end
   end
