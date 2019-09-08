@@ -1,13 +1,11 @@
 <form method="get" action="/home">
    <input type="submit" value="Home Page" />
  </form> 
-
- <form method="get" action="/logout">
+<form method="get" action="/logout">
    <input type="submit" value="Log Out" />
  </form>  
  
 <h1>All riddles </h1>
-
 <ul>
  <% @riddle_posts.each do |riddle_post|%>
    <li>
@@ -15,15 +13,17 @@
      <p>
       <%= riddle_post.content %>
     </p>
+    <% riddle_answer = riddle_post.answer %>
+    </li>
     </ul>
     <div id="spoiler" style="display:none"> 
-    <%= riddle_post.answer%>
+    <%= riddle_answer %>
     </div> 
     <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler') 
     .style.display=='none') {document.getElementById('spoiler') 
     .style.display=''}else{document.getElementById('spoiler') 
-    .style.display='none'}">Show/hide</button>
-   
-
-   </li>
+    .style.display='none'}">Show Answer</button>
+  
+   <p>
+   </p>
  <% end %>
