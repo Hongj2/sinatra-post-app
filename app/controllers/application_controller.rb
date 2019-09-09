@@ -83,6 +83,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/edit" do
+   
     @riddle_posts = RiddlePost.all   
     erb :"/user_page/userpost"
   end

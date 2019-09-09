@@ -1,17 +1,17 @@
-<form method="get" action="/home">
+<form method="get" action="/user_page/home">
    <input type="submit" value="Home Page" />
  </form> 
 <form method="get" action="/logout">
    <input type="submit" value="Log Out" />
  </form>  
  
-<h1>All riddles </h1>
+<h1>Edit your riddles </h1>
 <ul>
  <% @riddle_posts.each do |riddle_post|%>
    <li>
    <% if riddle_post.user_id == @user%>
       <%= riddle_post.title %>
-      <%= current_user.username%>%>
+      <%= riddle_post.id %>
      <p>
       <%= riddle_post.content %>
     </p>
