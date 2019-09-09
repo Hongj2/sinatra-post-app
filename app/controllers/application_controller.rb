@@ -10,12 +10,12 @@ class ApplicationController < Sinatra::Base
   end
 #creates a session id and provides an extra layer of security = creates a session hash that we can manipulate
   get "/" do
-    erb :welcome
+    erb :"/main_page/welcome"
   end
 
 #renders the log in form
   get '/login' do
-    erb :login
+    erb :"/main_page/login"
   end
 
 #recieve the login form to find user and log user in  by finding the user
@@ -25,7 +25,7 @@ class ApplicationController < Sinatra::Base
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
         #this is what actually logs the user in and session hash is assigned with key-value 
-        redirect "/home"
+        redirect "/user_page/home"
       else
         redirect "/failure"
       end
@@ -33,7 +33,7 @@ class ApplicationController < Sinatra::Base
 
 # renders a form to create a new user. The form includes fields for username and password.
   get "/signup" do
-    erb :signup
+    erb :"/main_page/signup"
   end
 
 
@@ -42,23 +42,22 @@ class ApplicationController < Sinatra::Base
     @user = User.new(params)
       @user.save
       session[:user_id] = @user.id
-      redirect "/home"
+      redirect "user_page/home"
       
   end
 
-  get "/home" do
+  
+  get "/user_page/home" do
     @user = User.find_by_id(session[:user_id])
 		 if @user
-			erb :home
+			erb :"/user_page/home"
 		 else
 		 	redirect "/failure"
 		 end
 	end
 
-
-
   get "/failure" do
-		erb :failure
+		erb :"/main_page/failure"
 	end
 
   helpers do
@@ -80,7 +79,11 @@ class ApplicationController < Sinatra::Base
   
 
   get '/index' do
-    erb :index
+    erb :"/post_page/index"
   end
 
+  get "/edit" do
+    @riddle_posts = RiddlePost.all   
+    erb :"/user_page/userpost"
+  end
 end
