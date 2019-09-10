@@ -1,0 +1,40 @@
+<div class="spoiler">
+    <div>
+    <input type="submit" name="submit" value="Display Answer" onclick="showhide(this);" >
+    </div>
+    
+    <div>
+        <div style="display: none;" class="spoiler2">
+                A coffin.
+             <div class="solution">
+             </div>
+        </div>
+    </div>
+</div>
+           
+
+<div class="spoiler" > 
+    <div> 
+    <input type="submit" name="submit" value="Display Answer" onclick="showhide(this);" >
+    </div>
+
+    </div>
+         <div style="display: none;" class="spoiler2">
+             <%= riddle_answer %> 
+            <div id="spoiler"> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="toggle" style="display:none">Hello</div>
+    <div id="spoiler" > <div style="display:none">  <%= riddle_answer %> </div> 
+    <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler') 
+    .style.display=='none') {document.getElementById('spoiler') 
+    .style.display=''}else{document.getElementById('spoiler') 
+    .style.display='none'}">Show Answer</button>
+
+
+   
+    

@@ -6,24 +6,29 @@
  </form>  
  
 <h1>All riddles </h1>
+
+<p>
+
+      </p>
 <ul>
  <% @riddle_posts.each do |riddle_post|%>
-   <li>
-      <%= riddle_post.title %>
-     <p>
-      <%= riddle_post.content %>
-    </p>
-    <% riddle_answer = riddle_post.answer %>
-    </li>
-    </ul>
-    <div id="spoiler" style="display:none"> 
-    <%= riddle_answer %>
-    </div> 
-    <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler') 
-    .style.display=='none') {document.getElementById('spoiler') 
-    .style.display=''}else{document.getElementById('spoiler') 
-    .style.display='none'}">Show Answer</button>
-   </li>
+  <li>
+    <h2>  <%= riddle_post.title %></h2>
+   <p> <%= riddle_post.content %> </p>
+    <h3> <% riddle_answer = riddle_post.answer %> </h3>
+   <body>
+    <details>
+      <summary>Answer</summary>
+      <p>
+
+      </p>
+      <p>  <%=riddle_post.answer%> </p>
+    </details>
+    </body> 
+  </li>
+ </ul>
+
    <p>
    </p>
  <% end %>
+ 
