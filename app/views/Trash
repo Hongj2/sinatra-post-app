@@ -37,4 +37,13 @@
 
 
    
-    
+#    get '/posts/:id/edit' do 
+#     @riddle_posts = RiddlePost.find_by_id(params[:id])
+#     erb :edit
+
+where("user_id= #{session[:user_id]}")
+
+get "/edit" do
+    @riddle_posts = RiddlePost.all
+    erb :"/users/userpost"
+    end

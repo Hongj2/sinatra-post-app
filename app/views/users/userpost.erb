@@ -4,32 +4,32 @@
 <form method="get" action="/logout">
    <input type="submit" value="Log Out" />
  </form>  
- 
+
+
 <h1>Edit your riddles </h1>
-<ul>
-<ul>
- <% @riddle_posts.each do |riddle_post|%>
+ 
+ <ul>
+  <% @riddle_post.each do |post|%>
+   <li>
+     <h2> <%= post.title %> </h2> 
+    <p>  <%=post.content %> </p>
+     <h3> <% answer = post.answer %> </h3>
+    <body>
+     <details>
+       <summary>Answer</summary>
+       <p>
 
-  <li>
-    <h2> <%= riddle_post.title %> </h2> 
-   <p>  <%=riddle_post.content %> </p>
-    <h3> <% riddle_answer = riddle_post.answer %> </h3>
-   <body>
-    <details>
-      <summary>Answer</summary>
-      <p>
+       </p>
+       <p>  <%=post.answer%> </p>
+     </details>
+     </body> 
+     <p>
 
-      </p>
-      <p>  <%=riddle_post.answer%> </p>
-    </details>
-    </body> 
+       </p>
+     <a href="/posts/<%=@riddle_post.id%>"> Click here to edit </a>   
+   </li>
+  </ul>
+
     <p>
-
-      </p>
-    <a href="/posts/<%=@riddle_post.id%>"> Click here to edit </a>   
-  </li>
- </ul>
-
-   <p>
-   </p>
- <% end %>
+    </p>
+  <% end %>

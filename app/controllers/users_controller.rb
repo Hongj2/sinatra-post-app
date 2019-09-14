@@ -7,15 +7,17 @@ class UsersController < ApplicationController
 
 #recieve the login form to find user and log user in  by finding the user
   post "/login" do
+   
     user = User.find_by(:username => params[:username]) 
     #verify user though key value pair
       if user && user.authenticate(params[:password])
-        session[:user_id] = user.id
+        session[:user_id]= user.id
         #this is what actually logs the user in and session hash is assigned with key-value 
         redirect "/users/home"
       else
         redirect "/failure"
       end
+      
   end
 
 # renders a form to create a new user. The form includes fields for username and password.
