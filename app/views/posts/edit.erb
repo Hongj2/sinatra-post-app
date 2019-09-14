@@ -1,4 +1,5 @@
-<form method="get" action="/home">
+#this page edits user's posts
+<form method="get" action="/users/home">
    <input type="submit" value="Home Page" />
  </form> 
 
@@ -18,7 +19,7 @@ Title: <%= @riddle_post.title %>
 
 </p>
 <p>
-<form method="POST" action="/riddle_posts/<%=@riddle_post.id%>">
+<form method="POST" action="/posts/<%=@riddle_post.id%>">
   <input type="hidden" name="_method" value="patch">
   <ul>
     <li>
@@ -44,7 +45,7 @@ Title: <%= @riddle_post.title %>
   <input type="submit" />
 </form>
 </p>
-  <form method="POST" action="/riddle_posts/<%=@riddle_post.id%>">
+  <form method="POST" action="/posts/<%=@riddle_post.id%>">
    <input type="hidden" name="_method" value="DELETE" />
    <input type="submit" value="delete" />
  </form> 

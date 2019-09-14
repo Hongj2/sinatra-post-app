@@ -1,42 +1,46 @@
 class UsersController < ApplicationController
  
-#CRUD
-get '/riddle_posts/new' do 
-    erb :"/post_page/new"
-end
+#renders the log in form
+  get '/login' do
+    erb :"/main_page/login"
+  end
 
-get '/riddle_posts' do 
-    @riddle_posts = RiddlePost.all   
-    erb :"/post_page/index"
-end
+#recieve the login form to find user and log user in  by finding the user
+  post "/login" do
+    user = User.find_by(:username => params[:username]) 
+    #verify user though key value pair
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        #this is what actually logs the user in and session hash is assigned with key-value 
+        redirect "/users/home"
+      else
+        redirect "/failure"
+      end
+  end
 
-get '/riddle_posts/:id' do  
-    @riddle_post = RiddlePost.find_by_id(params[:id])
-    erb :"/post_page/show"  
-end
+# renders a form to create a new user. The form includes fields for username and password.
+  get "/signup" do
+    erb :"/main_page/signup"
+  end
 
-#    get '/riddle_posts/:id/edit' do 
-#     @riddle_post = RiddlePost.find_by_id(params[:id])
-#     erb :edit
-    
-patch '/riddle_posts/:id' do  
-    @riddle_post = RiddlePost.find_by_id(params[:id])
-    @riddle_post.title = params[:title]
-    @riddle_post.content = params[:content]
-    @riddle_post.save
-    redirect to "/riddle_posts/#{@riddle_post.id}"
-end
 
-post '/riddle_posts' do  
-    @riddle_post = RiddlePost.create(params)
-    redirect to "/riddle_posts/#{@riddle_post.id}"
-end
+#make a new instance of our user class with a username and password from params. Note that even though our database has a #column called password_digest, we still access the attribute of password. This is given to us by has_secure_password
+  post "/signup" do
+    @user = User.new(params)
+      @user.save
+      session[:user_id] = @user.id
+      redirect "users/home"    
+  end
 
-delete '/riddle_posts/:id' do 
-    @riddle_post = RiddlePost.find_by_id(params[:id])
-    @riddle_post.delete
-    redirect to '/riddle_posts'  
-end
+  get "/users/home" do
+    @user = User.find_by_id(session[:user_id])
+		 if @user
+			erb :"/users/home"
+		 else
+		 	redirect "/failure"
+		 end
+	end
+
     
 
 end

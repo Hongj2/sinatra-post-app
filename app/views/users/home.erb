@@ -3,17 +3,16 @@
 <p>Welcome to your homepage, <%= current_user.username%>!! Check out all the possbilities you have on this website!! </p>
 <p>Are you ready for some silly riddles?</p>
 <ul>
-    <li>Create your own riddles</li><a href="/riddle_posts/new">Create</a>
+    <li>Create Your Own Riddles</li><a href="/posts/new">Create</a>
     <p></p>
-    <li>Read your riddles</li><a href="/riddle_posts">Read</a>
+    <li>Read All Riddles</li><a href="/posts">Read</a>
     <p></p>
-    <li>Update your riddles</li><a href="/edit">Edit</a>
+    <li>Update Your Riddles</li><a href="/posts/userpost">Edit</a>
     <p></p>
     
 </ul>
 <p></p>
 <p></p>
-
  <form method="get" action="/logout">
    <input type="submit" value="Log Out" />
  </form>  
