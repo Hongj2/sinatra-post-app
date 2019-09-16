@@ -1,4 +1,8 @@
+# the first application controller class HAS to inherit from Sinatra::Base 
+# by doing so, the class gains the Rack-compatible interace an turns it in a web application 
+# Class that inherit from S:B also gains the ability to define HTTP interface 
 require './config/environment'
+
 
 class ApplicationController < Sinatra::Base
 

@@ -21,14 +21,12 @@ end
 
 get '/posts/edit' do  
     @riddle_post = RiddlePost.where("user_id= #{session[:user_id]}")
-    binding.pry
     redirect to "/users/userpost"  
 
 end
 
 get "/users/userpost" do
-    @riddle_post= RiddlePost.where("user_id=#{session[:user_id]}")   
-    binding.pry
+    @riddle_post= RiddlePost.where("user_id=#{session[:user_id]}")  
       erb :"/users/userpost"
     end    
 
@@ -37,8 +35,6 @@ get '/posts/:id' do
     @riddle_post = RiddlePost.find_by_id(params[:id])
     erb :"/posts/edit" 
 end
-
-
 
 patch '/posts/:id' do  
     @riddle_post = RiddlePost.find_by_id(params[:id])
