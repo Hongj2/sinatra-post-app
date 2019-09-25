@@ -20,6 +20,7 @@ post '/posts' do
 end
 
 get '/posts/edit' do  
+    @riddle_post.user = current_user
     @riddle_post = RiddlePost.where("user_id= #{session[:user_id]}")
     redirect to "/users/userpost"  
 
@@ -33,7 +34,11 @@ get "/users/userpost" do
 #model.update_one_post
 get '/posts/:id' do  
     @riddle_post = RiddlePost.find_by_id(params[:id])
+    if @riddle_post.user == current_user 
     erb :"/posts/edit" 
+    else
+     erb :"/users/home"
+    end
 end
 
 patch '/posts/:id' do  
